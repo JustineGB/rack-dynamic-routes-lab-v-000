@@ -1,12 +1,13 @@
 require 'pry'
 
 class Application
+@@items = []
 
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-     #search#if is is a good path
+    if req.path.match(/items/) #search#if is is a good path
       binding.pry
       item = req.params["q"]  #resp.write item_info(item)#call next method, else bad path and return error
       if @@items.include?(item)
