@@ -11,7 +11,7 @@ class Application
       item = req.path.split("/items/").last #set item to figs  #if @@items.include?(item) && ...
       if item = @@items.find{|i| i.name == item} #if this user_selected_item is found in the @@items array, then return the item name and price
         resp.write  "#{item.price}"
-        res.status = 200
+        resp.status = 200
       else #if not in the array, give error message
         resp.write "Item not found"
         resp.status = 400
