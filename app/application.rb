@@ -20,7 +20,6 @@ class Application
         resp.write "Item not found"
         resp.status = 400
       end
-    end
     else #else, the route is bad and return 404
       resp.write "Route not found" #else it is not a
       resp.status = 404
