@@ -10,10 +10,11 @@ class Application
     if req.path.match(/items/) #if is is a good path:
       #binding.pry
       user_item = req.path.split("/items/").last #set item to figs
-      if user_item = @@items.find{|i| i == user_item}
+      #if @@items.include?(item)
+      if user_item = @@items.find{|i| i == user_item} #if this user_selected_item is found in the @@items array, then return the item name and price 
         resp.write  "#{user_item.name}, #{user_item.price}"
         res.status = 200
-#      if @@items.include?(item)
+
 
         #@@items.collect {|i| resp.write "#{i.price}"}
 
