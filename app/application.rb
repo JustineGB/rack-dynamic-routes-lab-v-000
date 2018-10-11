@@ -7,15 +7,16 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path.match(/items/) #search#if is is a good path
+    if req.path.match(/items/) #if is is a good path:
       #binding.pry
-      item = req.path.split("/items/").last #set item to local variable (split the array and just grab the last item)
-      if @@items.include?(item)
-        item = @@items.find {|i| i == item}
+      user_item = req.path.split("/items/").last #set item to figs
+      if user_item = @@items.find{|i| i == user_item}
+        resp.write  "#{user_item.name}, #{user_item.price}"
+        res.status = 200
+#      if @@items.include?(item)
 
         #@@items.collect {|i| resp.write "#{i.price}"}
-        resp.write item
-        res.status = 200
+        
       else #if not in the array, give error message
         resp.write "Item not found"
         resp.status = 400
