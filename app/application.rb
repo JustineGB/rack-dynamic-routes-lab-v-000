@@ -14,10 +14,6 @@ class Application
       if user_item = @@items.find{|i| i == user_item} #if this user_selected_item is found in the @@items array, then return the item name and price
         resp.write  "#{user_item.name}, #{user_item.price}"
         res.status = 200
-
-
-        #@@items.collect {|i| resp.write "#{i.price}"}
-
       else #if not in the array, give error message
         resp.write "Item not found"
         resp.status = 400
