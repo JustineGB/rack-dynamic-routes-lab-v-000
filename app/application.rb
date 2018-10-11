@@ -16,7 +16,7 @@ class Application
 #      if @@items.include?(item)
 
         #@@items.collect {|i| resp.write "#{i.price}"}
-        
+
       else #if not in the array, give error message
         resp.write "Item not found"
         resp.status = 400
