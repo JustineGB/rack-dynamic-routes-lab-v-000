@@ -8,10 +8,9 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/) #if is is a good path:
-      #binding.pry
-      selected_item = req.path.split("/items/").last #set item to figs  #if @@items.include?(item) && ...
-      if selected_item = @@items.find{|i| i.name == selected_item} #if this user_selected_item is found in the @@items array, then return the item name and price
-        resp.write  "#{selected_item.price}"
+      item = req.path.split("/items/").last #set item to figs  #if @@items.include?(item) && ...
+      if item = @@items.find{|i| i.name == item} #if this user_selected_item is found in the @@items array, then return the item name and price
+        resp.write  "#{item.price}"
         res.status = 200
       else #if not in the array, give error message
         resp.write "Item not found"
