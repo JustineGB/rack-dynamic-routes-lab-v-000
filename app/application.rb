@@ -8,12 +8,13 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/) #search#if is is a good path
-      binding.pry
-      item = req.params["q"]  #resp.write item_info(item)#call next method, else bad path and return error
+      #binding.pry
+      item = req.path.split("/items/").last
+      item = @@items.find {|i| i == item}
+
+      #item = req.params["q"]  #resp.write item_info(item)#call next method, else bad path and return error
       if @@items.include?(item)
         @@items.collect {|i| resp.write "#{i.price}"}
-        #item = @@items.find {|i| i == item}
-        #item_price = req.path.split("/items/").last
         resp.write item
         res.status = 200
       else #if not in the array, give error message
